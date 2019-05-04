@@ -16,6 +16,8 @@ Each level of the walkthrough guide summarises the:
 4) Common misconceptions (if any)
 
 # Walkthrough Guide
+* Password for Level 0: natas0  
+
 **Natas Level 0 → Level 1**  
 You can find the password for the next level on this page.  
 **Key Takeaways**: learn how to view the page source using any methods.
@@ -51,4 +53,10 @@ There is nothing on this page
 * Google's site crawlers index sites all over the web, and robots.txt is a text file webmasters create to instruct robots (typically search engine crawlers) how to crawl and index their page.
 * We open the robots.txt file of the site, and find that there is a disallowed directory from being crawled - s3cr3t.
 * Enter the s3cr3t directory and we find a users.txt file containing the password for the next level.
-* Password for Level 3: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+* Password for Level 4: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+**Natas Level 4 → Level 5**  
+
+**Key Takeaways**: learn .
+* 
+* Password for Level 5: 
