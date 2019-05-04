@@ -42,3 +42,13 @@ There is nothing on this page
 * We are at the parent working directory when the page is loaded, thus to navigate to the files directory, add a /files to the website link. We see that there are 2 files in the /files directory, pixel.png and users.txt.
 * There are several username and password pairs found in users.txt, including the one for the next level.
 * Password for Level 3: sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+**Natas Level 3 → Level 4**  
+There is nothing on this page  
+**Key Takeaways**: learn about the web crawlers and the robot.txt file of a website.
+* There are no more files found from the page's source code, as stated by the creator who said that there are now "no more information leaks".
+* However, the creator also said that "not even Google will find it this time". This gave a clue into where we should search next.
+* Google's site crawlers index sites all over the web, and robots.txt is a text file webmasters create to instruct robots (typically search engine crawlers) how to crawl and index their page.
+* We open the robots.txt file of the site, and find that there is a disallowed directory from being crawled - s3cr3t.
+* Enter the s3cr3t directory and we find a users.txt file containing the password for the next level.
+* Password for Level 3: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
