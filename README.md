@@ -13,7 +13,9 @@ Each level of the walkthrough guide summarises the:
 
 # Walkthrough Guide
 **Natas Level 0 → Level 1**  
-You can find the password for the next level on this page.
-**Key Takeaways**: learn how to ...
-* 
-* Password for Level 1: 
+You can find the password for the next level on this page.  
+**Key Takeaways**: learn how to read the page source.
+* Since there is no visible sign of the password on the loaded page, the page source is the next thing we look to.
+* To access the page source, right-click on anywhere on the page and select "View page source".
+* Tip: CTRL + U is the shortcut key for Chrome web browsers.
+* Password for Level 1: gtVrDuiDfck831PqWsLEZy5gyDz1clto
