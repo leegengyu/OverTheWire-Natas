@@ -129,3 +129,16 @@ Find words containing:
 * Thus, the final crafted search string is `; cat /etc/natas_webpass/natas10`, and after pressing Search, the password for the next level is found on the first line.
 * We can add an additional whitespace and a `#` after the search string to mark the rest of the contents as a comment, so the dictionary.txt file would not be fully displayed as the output as well. Note: `//` is not the way to indicate comments here.
 * Password for Level 10: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+**Natas Level 10 → Level 11**  
+For security reasons, we now filter on certain characters  
+Find words containing: 
+**Key Takeaways**: learn how unsanitised user input can be manipulated to deviate from the intended usage of a command.
+* This challenge is similar to the previous level where the exact same piece of code is used, with the exception of the checking of illegal characters in the user's input by using PHP's `preg_match()` (i.e. some form of user sanitisation).
+* Characters such as `;`, `\` and `&` are checked for, and the passthru() function will not be executed if any of these characters are found. Thus the crafted search string used in the previous level cannot be used for this level because its first character is considered an illegal character in this level.
+* Since the semi-colon character cannot be used, our own commands cannot be introduced, since we cannot separate our own ones (i.e. cat) from grep.
+* With that, I found out that the method which did not work for me in the previous level is actually the puzzle-solver for this level.
+* I modified my crafted search string to be: `"0" /etc/natas_webpass/natas11`, after getting inspiration from the previous level's working method to comment out the dictionary.txt, instead of ending the entire line by myself prematurely.
+* Entering this search string does not work because there is no numberical value 0 in the password. When we change 0 to 1, the password appears because there is a numeric value 1 in the password. In unlucky cases where the numbers are bigger, we would have to attempt more guesses if we start from the number 0.
+* Note: You can add a whitespace and a `#` to remove the location of the password file from the output.
+* Password for Level 11: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
