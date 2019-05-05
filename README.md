@@ -76,3 +76,12 @@ Access disallowed. You are not logged in
 * Using the chrome web browser, double-clicking on the value allows us to change the value, but the modified value is not actually retained, i.e. refreshing the page results in the cookie value being set back to 0. I think that this is a security measure by the Chrome developers.
 * I used a Chrome browser extension called EditThisCookie to modify the value of the cookie 'loggedin' to 1. After changing the value, click on the green tick symbol to save it, and refresh the page to obtain the password.
 * Password for Level 6: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+
+**Natas Level 6 → Level 7**  
+Input secret: 
+**Key Takeaways**: learn how to read PHP code.
+* There is a textbox on the page that allows us to submit the secret value. For a start, by entering random values into the textbox and submitting it, we get the same error message "Wrong secret".
+* Next, click on the "View sourecode" to be taken to index-source.html, where we see that there is an if-else statement that gives us our password for the next level if the secret value is correct.
+* Notice that there is a file that is located at the includes directory, titled secret.inc, that is included in the source code just before the if-else statement.
+* We do not have permissions granted to us to see what is in the includes directory, but we are able to get the secret value by accessing the file, by adding /includes/secret.inc to the original link.
+* Password for Level 7: 
