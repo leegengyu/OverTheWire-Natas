@@ -91,8 +91,22 @@ Input secret:
 **Natas Level 7 → Level 8**  
 Home About  
 **Key Takeaways**: learn how to navigate to other files hosted on the same website, even if no direct link is given.
-* This challenge is similar to that of Level 2 where we have to access files whose links are not explictly given. However, I believe that there is a difference between these 2 levels, where the file we have to access in this level is relative to the path of the PHP file (as we will see below).
+* This challenge is similar to Level 2 where we have to access files whose links are not explictly given. However, I believe that there is a difference between these 2 levels, where the file we have to access in this level is relative to the path of the PHP file (as we will see below).
 * Upon logging in, we are at a page that displays 2 links to `Home` and to `About`. Going to Home changes the weblink to `/index.php?page=home` while going to About changes the weblink to `/index.php?page=about`.
 * Opening the page source of either of the 2 links, and there is a hint that says where the password for the next level is found in `/etc/natas_webpass/natas8`.
 * Instead of going to home or about (which is the last parameter of the weblink), we want to go to /etc/natas_webpass/natas8, and thus, we have our password displayed.
 * Password for Level 8: DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+
+**Natas Level 8 → Level 9**  
+Input secret:  
+**Key Takeaways**: learn how to read PHP code and use functions such as bin2hex/hex2bin, strrev and base64_encode/base64_decode.
+* This challenge is similar to Level 6 where we are required to submit the secret value before we can get the password to the next level.
+* As usual, click on `View sourcecode`, and we see that the password to the next level is similarly censored.
+* Our secret value is passed into the function `encodeSecret()` as a parameter, before being converted to a hexadecimal value (`bin2hex`), string reversed (`strrev`) and finally base64-encoded (`base64_encode`). The encoded value is then checked against the $encodedSecret which contains the string 3d3d516343746d4d6d6c315669563362.
+* Note: bin2hex does not convert a *binary number* to a hexadecimal number. According to the PHP online documentation, it returns the hexadecimal representation of the given *string*, not a number. This is made more explicit when we go to the documentation page for hex2bin, where there is a cautionary note to highlight this point.
+* To reverse-engineer the secret value out of $encodedSecret, we have to first run hex2bin against $encodedSecret. We can use an online PHP function to execute this, to get the string `==QcCtmMml1ViV3b`.
+* Note: hex2bin can only be executed in an environment where the PHP version is >= 5.4.0.
+* Next, reverse the string using any tool that you can get your hands on (or manually do it since the string is short), to get `b3ViV1lmMmtCcQ==`.
+* Finally, do a base64-decode on the reversed string to get `oubWYf2kBq`, which is the correct $secret.
+* Note: The PHP documentation page for base64_encode() states that the data is encoded with MIME base64. When using any online base64 decoder, you can choose the source character set to be UTF-8 or ASCII, and the decoding will still work successfully.
+* Password for Level 9: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
