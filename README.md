@@ -59,7 +59,7 @@ There is nothing on this page
 Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"  
 **Key Takeaways**: learn how to modify elements of a website.
 * When the page is first loaded, the page says that access is disallowed because we did not come from "http://natas5.natas.labs.overthewire.org/". Having the login credentials to the level itself did not allow us to be "authorized users".
-* Clicking on the "Refresh page" link on the same page just below the message results in a change in the part which states where we visited the page *from*. Clicking it again changes the link again, because the displayed message takes reference from the previous link which we were at, before we visit the natas4 page.
+* Clicking on the "Refresh page" link on the same page (which is found just below the message) results in a change in the part which states where we visited the page *from*. Clicking it again changes the link again, because the displayed message takes reference from the previous link which we were at, before we visit the natas4 page.
 * Since we have to come from the natas5 site in order to be considered an authorized user, we head to the site (albeit with no valid credentials). We do not have to successfully login, just escape the login pop-up box by pressing the Cancel button. A page with the title Unauthorized is displayed.
 * We have to visit natas4 from the natas5 site, and since the page (with the title Unauthorized) that is displayed does not have the link to natas4, we have to manually insert it into the page.
 * Open up the Developer Tools (CTRL + SHIFT + I for Chrome web browser users) and head to the Elements tab. Here, I will be replacing the `<address>Apache/2.4.10 ...</address>` with the address to natas4.
@@ -67,3 +67,12 @@ Access disallowed. You are visiting from "" while authorized users should come o
 * Let us modify it to be `<a href="http://natas4.natas.labs.overthewire.org/">Refresh page</a>`, since we have to visit natas5 from natas4.
 * Close the Developer Tools after this is done and click on Refresh page on natas5 Unauthorized site. The password is now shown on the natas4 page.
 * Password for Level 5: iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+
+**Natas Level 5 → Level 6**  
+Access disallowed. You are not logged in  
+**Key Takeaways**: learn how to modify a cookie's value.
+* There are no obvious hints of how we should proceed besides the generic message that we are not logged in. The previous level gave the clue that we were unauthorized because we did not come from a specific page previously, but there was no such hint in this level.
+* However, looking at the other tabs on the Developer Tools, we see that there is an Application tab (for Chrome web browser users) with the cookie 'loggedin', whose value is set to 0.
+* Using the chrome web browser, double-clicking on the value allows us to change the value, but the modified value is not actually retained, i.e. refreshing the page results in the cookie value being set back to 0. I think that this is a security measure by the Chrome developers.
+* I used a Chrome browser extension called EditThisCookie to modify the value of the cookie 'loggedin' to 1. After changing the value, click on the green tick symbol to save it, and refresh the page to obtain the password.
+* Password for Level 6: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
