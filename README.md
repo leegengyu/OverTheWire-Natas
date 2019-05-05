@@ -56,7 +56,14 @@ There is nothing on this page
 * Password for Level 4: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 
 **Natas Level 4 → Level 5**  
-
-**Key Takeaways**: learn .
-* 
-* Password for Level 5: 
+Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"  
+**Key Takeaways**: learn how to modify elements of a website.
+* When the page is first loaded, the page says that access is disallowed because we did not come from "http://natas5.natas.labs.overthewire.org/". Having the login credentials to the level itself did not allow us to be "authorized users".
+* Clicking on the "Refresh page" link on the same page just below the message results in a change in the part which states where we visited the page *from*. Clicking it again changes the link again, because the displayed message takes reference from the previous link which we were at, before we visit the natas4 page.
+* Since we have to come from the natas5 site in order to be considered an authorized user, we head to the site (albeit with no valid credentials). We do not have to successfully login, just escape the login pop-up box by pressing the Cancel button. A page with the title Unauthorized is displayed.
+* We have to visit natas4 from the natas5 site, and since the page (with the title Unauthorized) that is displayed does not have the link to natas4, we have to manually insert it into the page.
+* Open up the Developer Tools (CTRL + SHIFT + I for Chrome web browser users) and head to the Elements tab. Here, I will be replacing the <address>Apache/2.4.10 ...</address>  with the address to natas4.
+* Right-click on the part which we will be replacing and select Edit as HTML. We can copy and paste the Refresh link from natas4 to natas5, using it as a template. The code from natas4 is <a href="index.php">Refresh page</a>.
+* Let us modify it to be <a href="http://natas4.natas.labs.overthewire.org/">Refresh page</a>, since we have to visit natas5 from natas4.
+* Close the Developer Tools after this is done and click on Refresh page on natas5 Unauthorized site. The password is now shown on the natas4 page.
+* Password for Level 5: iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
