@@ -110,3 +110,22 @@ Input secret:
 * Finally, do a base64-decode on the reversed string to get `oubWYf2kBq`, which is the correct $secret.
 * Note: The PHP documentation page for base64_encode() states that the data is encoded with MIME base64. When using any online base64 decoder, you can choose the source character set to be UTF-8 or ASCII, and the decoding will still work successfully.
 * Password for Level 9: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+
+**Natas Level 9 → Level 10**  
+Find words containing:  
+**Key Takeaways**: learn how to .
+* As literal as it states, we are able to type characters into the search box, and a list of words containing the characters that we type in will be displayed as the output. We enter the word password for searching, and only 3 results appear, none of which are the passwords. Searching for natas or natas10 yields no useful results similarly.
+* Head to the view the source code, and we see that the file which our characters are searched against is `dictionary.txt`. ooking into the dictionary.txt file, we do not find the password for the next level either.
+* Head back to the search feature and we notice that one of the weblink's parameter changes whenever our search string changes: `?needle=<our_search_string>&submit=Search`. Given that the user input forms the request parameters, there is a chance that the user input is unsanitised, i.e. used verbatim.
+* Looking at the source code, our input is assigned to $key, and the search occurs against dictionary.txt using the `grep` command. Notice that the PHP function `passthru` allows the Unix command to be executed.
+* This PHP function "executes an external program and displays raw output" according to the PHP online documentation. The first warning under the Notes section tells users that user-supplied data being passed to the function must first be sanitised, to prevent the system from being tricked into executing arbitrary commands.
+* On first thought, this was my crafted search string: `"0" /etc/natas_webpass/natas10"); //`. This crafted string was meant to search for a numeric character that exists within the password file, and to return the entire password that contains this character. The double slash at the end was to mark the rest of the line as a comment, so that it would not be executed.
+* The result should look like this: `passthru("grep -i "0" /etc/natas_webpass/natas10"); // dictionary.txt");`.
+* What I had in mind was to repeat this search a couple of times with different numbers from 0 to 9, since the password is likely to have numerical values.
+* However, this method did not work (I am not sure why either).
+
+* Since the parameter being passed to passthru is/are command(s) being executed in a Unix environment, we can use `;` to separate the current grep command and to include our own one.
+* Our additional command is `cat /etc/natas_webpass/natas10`.
+* Thus, the final crafted search string is `; cat /etc/natas_webpass/natas10`, and after pressing Search, the password for the next level is found on the first line.
+* We can add an additional whitespace and a `#` after the search string to mark the rest of the contents as a comment, so the dictionary.txt file would not be fully displayed as the output as well. Note: `//` is not the way to indicate comments here.
+* Password for Level 10: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
