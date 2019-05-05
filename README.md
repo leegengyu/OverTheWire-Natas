@@ -87,3 +87,12 @@ Input secret:
 * `$secret = "FOEIUWGHFEEUHOFUOIU";`
 * Submit the secret value and we get the password for the next level.
 * Password for Level 7: 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+**Natas Level 7 → Level 8**  
+Home About  
+**Key Takeaways**: learn how to navigate to other files hosted on the same website, even if no direct link is given.
+* This challenge is similar to that of Level 2 where we have to access files whose links are not explictly given. However, I believe that there is a difference between these 2 levels, where the file we have to access in this level is relative to the path of the PHP file (as we will see below).
+* Upon logging in, we are at a page that displays 2 links to `Home` and to `About`. Going to Home changes the weblink to `/index.php?page=home` while going to About changes the weblink to `/index.php?page=about`.
+* Opening the page source of either of the 2 links, and there is a hint that says where the password for the next level is found in `/etc/natas_webpass/natas8`.
+* Instead of going to home or about (which is the last parameter of the weblink), we want to go to /etc/natas_webpass/natas8, and thus, we have our password displayed.
+* Password for Level 8: DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
