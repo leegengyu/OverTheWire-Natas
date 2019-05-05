@@ -113,7 +113,7 @@ Input secret:
 
 **Natas Level 9 → Level 10**  
 Find words containing:  
-**Key Takeaways**: learn how to .
+**Key Takeaways**: learn how unsanitised user input can be manipulated to be used as a command.
 * As literal as it states, we are able to type characters into the search box, and a list of words containing the characters that we type in will be displayed as the output. We enter the word password for searching, and only 3 results appear, none of which are the passwords. Searching for natas or natas10 yields no useful results similarly.
 * Head to the view the source code, and we see that the file which our characters are searched against is `dictionary.txt`. ooking into the dictionary.txt file, we do not find the password for the next level either.
 * Head back to the search feature and we notice that one of the weblink's parameter changes whenever our search string changes: `?needle=<our_search_string>&submit=Search`. Given that the user input forms the request parameters, there is a chance that the user input is unsanitised, i.e. used verbatim.
@@ -123,7 +123,7 @@ Find words containing:
 * The result should look like this: `passthru("grep -i "0" /etc/natas_webpass/natas10"); // dictionary.txt");`.
 * What I had in mind was to repeat this search a couple of times with different numbers from 0 to 9, since the password is likely to have numerical values.
 * However, this method did not work (I am not sure why either).
-
+* **To return later to investigate again.**
 * Since the parameter being passed to passthru is/are command(s) being executed in a Unix environment, we can use `;` to separate the current grep command and to include our own one.
 * Our additional command is `cat /etc/natas_webpass/natas10`.
 * Thus, the final crafted search string is `; cat /etc/natas_webpass/natas10`, and after pressing Search, the password for the next level is found on the first line.
