@@ -74,7 +74,8 @@ Access disallowed. You are not logged in
 * There are no obvious hints of how we should proceed besides the generic message that we are not logged in. The previous level gave the clue that we were unauthorized because we did not come from a specific page previously, but there was no such hint in this level.
 * However, looking at the other tabs on the Developer Tools, we see that there is an Application tab (for Chrome web browser users) with the cookie 'loggedin', whose value is set to 0.
 * Using the chrome web browser, double-clicking on the value allows us to change the value, but the modified value is not actually retained, i.e. refreshing the page results in the cookie value being set back to 0. I think that this is a security measure by the Chrome developers.
-* I used a Chrome browser extension called EditThisCookie to modify the value of the cookie 'loggedin' to 1. After changing the value, click on the green tick symbol to save it, and refresh the page to obtain the password.
+* Go to the browser's console on that page, and enter `document.cookie="loggedin=1"`. The console echoes back `loggedin=1`. Refresh the page to obtain the password.
+* Alternatively, we can use a Chrome browser extension called EditThisCookie to modify the value of cookies. After changing the value, click on the green tick symbol to save it, and refresh the page to obtain the password.
 * Password for Level 6: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
 
 **Natas Level 6 → Level 7**  
